@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -56,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ListaTypow.cs" />
+    <Compile Include="lpsolve55.cs" />
     <Compile Include="PanelGlowny.cs">
       <SubType>Form</SubType>
     </Compile>

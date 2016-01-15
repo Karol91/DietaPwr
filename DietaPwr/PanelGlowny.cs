@@ -30,8 +30,13 @@ namespace DietaPwr
 
         public PanelGlowny()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+        }
 
+        public List<Produkty> _listaProduktow
+        {
+            get { return listaProduktowFiltr; }
+            set { listaProduktowFiltr = value; }
         }
 
 
@@ -266,6 +271,12 @@ namespace DietaPwr
             }
         }
 
+        public void BindAndRowNumber ()
+        {
+
+            BindGrid();
+            setRowNumber(dataGridView1);
+        }
 
         private void Filtrowanie(CheckBox checkbox, String typ)
         {
@@ -357,5 +368,14 @@ namespace DietaPwr
             Filtrowanie(chckBoxFish, chckBoxFish.Text);
         }
         #endregion
+
+        private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //new PanelDodawania().Show();
+            PanelDodawania panelDodawania = new PanelDodawania(this);
+            panelDodawania._listaProduktow = _listaProduktow;
+            panelDodawania.Show();
+            
+        }
     }
 }

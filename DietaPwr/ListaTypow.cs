@@ -7,9 +7,9 @@ namespace DietaPwr
 {
     class ListaTypow
     {
-        enum TypProduktu
+        public enum TypProduktu
         {
-            Cheese,
+            Cheese =1,
             Juice,
             Fruit,
             Vegetable,

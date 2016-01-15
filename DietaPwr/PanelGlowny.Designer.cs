@@ -111,6 +111,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.otworzToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajProduktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produktyBindingSource)).BeginInit();
@@ -929,17 +930,25 @@
             // plikToolStripMenuItem
             // 
             this.plikToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.otworzToolStripMenuItem});
+            this.otworzToolStripMenuItem,
+            this.dodajProduktToolStripMenuItem});
             this.plikToolStripMenuItem.Name = "plikToolStripMenuItem";
-            this.plikToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
-            this.plikToolStripMenuItem.Text = "Plik";
+            this.plikToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.plikToolStripMenuItem.Text = "File";
             // 
             // otworzToolStripMenuItem
             // 
             this.otworzToolStripMenuItem.Name = "otworzToolStripMenuItem";
-            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.otworzToolStripMenuItem.Text = "Otwórz";
+            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.otworzToolStripMenuItem.Text = "Open";
             this.otworzToolStripMenuItem.Click += new System.EventHandler(this.otworzToolStripMenuItem_Click);
+            // 
+            // dodajProduktToolStripMenuItem
+            // 
+            this.dodajProduktToolStripMenuItem.Name = "dodajProduktToolStripMenuItem";
+            this.dodajProduktToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dodajProduktToolStripMenuItem.Text = "Add product";
+            this.dodajProduktToolStripMenuItem.Click += new System.EventHandler(this.dodajProduktToolStripMenuItem_Click);
             // 
             // PanelGlowny
             // 
@@ -1050,6 +1059,7 @@
         private System.Windows.Forms.CheckBox chckBoxDairy;
         private System.Windows.Forms.CheckBox chckBoxDessert;
         private System.Windows.Forms.CheckBox chckBoxBaked;
+        private System.Windows.Forms.ToolStripMenuItem dodajProduktToolStripMenuItem;
 
     }
 }

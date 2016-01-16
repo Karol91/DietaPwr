@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -57,6 +58,7 @@
   <ItemGroup>
     <Compile Include="ListaTypow.cs" />
     <Compile Include="PanelDodawania.cs">
+    <Compile Include="lpsolve55.cs" />
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PanelDodawania.Designer.cs">

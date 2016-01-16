@@ -1,0 +1,48 @@
+D:\Projekty\DietaPwr\DietaPwr\bin\Debug\DietaPwr.exe.config
+D:\Projekty\DietaPwr\DietaPwr\obj\Debug\DietaPwr.csprojResolveAssemblyReference.cache
+D:\Projekty\DietaPwr\DietaPwr\obj\Debug\DietaPwr.Properties.Resources.resources
+D:\Projekty\DietaPwr\DietaPwr\obj\Debug\DietaPwr.csproj.GenerateResource.Cache
+D:\Projekty\DietaPwr\DietaPwr\bin\Debug\DietaPwr.exe
+D:\Projekty\DietaPwr\DietaPwr\bin\Debug\DietaPwr.pdb
+D:\Projekty\DietaPwr\DietaPwr\obj\Debug\DietaPwr.exe
+D:\Projekty\DietaPwr\DietaPwr\obj\Debug\DietaPwr.pdb
+D:\Projekty\DietaPwr\DietaPwr\bin\Debug\MathNet.Numerics.dll
+D:\Projekty\DietaPwr\DietaPwr\bin\Debug\MathNet.Numerics.xml
+D:\Projekty\DietaPwr\DietaPwr\obj\Debug\DietaPwr.PanelGlowny.resources
+D:\Projekty\DietaPwr\DietaPwr\bin\Debug\CsvHelper.dll
+D:\Projekty\DietaPwr\DietaPwr\bin\Debug\CsvHelper.pdb
+D:\Projekty\DietaPwr\DietaPwr\bin\Debug\CsvHelper.xml
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr\DietaPwr\bin\Debug\DietaPwr.exe.config
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr\DietaPwr\obj\Debug\DietaPwr.exe
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr\DietaPwr\obj\Debug\DietaPwr.pdb
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr\DietaPwr\bin\Debug\DietaPwr.exe
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr\DietaPwr\bin\Debug\DietaPwr.pdb
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr\DietaPwr\bin\Debug\CsvHelper.dll
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr\DietaPwr\bin\Debug\MathNet.Numerics.dll
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr\DietaPwr\bin\Debug\CsvHelper.pdb
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr\DietaPwr\bin\Debug\CsvHelper.xml
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr\DietaPwr\bin\Debug\MathNet.Numerics.xml
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr\DietaPwr\obj\Debug\DietaPwr.csprojResolveAssemblyReference.cache
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr\DietaPwr\obj\Debug\DietaPwr.PanelGlowny.resources
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr\DietaPwr\obj\Debug\DietaPwr.Properties.Resources.resources
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr\DietaPwr\obj\Debug\DietaPwr.csproj.GenerateResource.Cache
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr - Kopia\DietaPwr\bin\Debug\DietaPwr.exe.config
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr - Kopia\DietaPwr\obj\Debug\DietaPwr.exe
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr - Kopia\DietaPwr\obj\Debug\DietaPwr.pdb
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr - Kopia\DietaPwr\bin\Debug\DietaPwr.exe
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr - Kopia\DietaPwr\bin\Debug\DietaPwr.pdb
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr - Kopia\DietaPwr\bin\Debug\CsvHelper.dll
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr - Kopia\DietaPwr\bin\Debug\MathNet.Numerics.dll
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr - Kopia\DietaPwr\bin\Debug\CsvHelper.pdb
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr - Kopia\DietaPwr\bin\Debug\CsvHelper.xml
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr - Kopia\DietaPwr\bin\Debug\MathNet.Numerics.xml
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr - Kopia\DietaPwr\obj\Debug\DietaPwr.csprojResolveAssemblyReference.cache
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr - Kopia\DietaPwr\obj\Debug\DietaPwr.PanelGlowny.resources
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr - Kopia\DietaPwr\obj\Debug\DietaPwr.Properties.Resources.resources
+E:\dokumenty\pwr\magisterka\swd\projekt\DietaPwr - Kopia\DietaPwr\obj\Debug\DietaPwr.csproj.GenerateResource.Cache
+E:\dokumenty\pwr\magisterka\swd\projekt\git - Kopia\DietaPwr\bin\Debug\DietaPwr.exe.config
+E:\dokumenty\pwr\magisterka\swd\projekt\git - Kopia\DietaPwr\obj\Debug\DietaPwr.exe
+E:\dokumenty\pwr\magisterka\swd\projekt\git - Kopia\DietaPwr\obj\Debug\DietaPwr.pdb
+E:\dokumenty\pwr\magisterka\swd\projekt\git\DietaPwr\bin\Debug\DietaPwr.exe.config
+E:\dokumenty\pwr\magisterka\swd\projekt\git\DietaPwr\obj\Debug\DietaPwr.exe
+E:\dokumenty\pwr\magisterka\swd\projekt\git\DietaPwr\obj\Debug\DietaPwr.pdb

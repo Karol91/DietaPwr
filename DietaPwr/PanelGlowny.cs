@@ -7,15 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MathNet.Numerics;
 using System.IO;
 using CsvHelper;
 using CsvHelper.Configuration;
 using Microsoft.VisualBasic.FileIO;
+using lpsolve55;
+using System.Globalization;
 namespace DietaPwr
 {
+    
     public partial class PanelGlowny : Form
     {
+        NumberFormatInfo provider = new NumberFormatInfo();
         bool ograniczBialko = false;
         bool ograniczTluszcze = false;
         bool ograniczWeglowodany = false;
@@ -25,6 +28,12 @@ namespace DietaPwr
         bool ograniczWita = false;
         bool ograniczTiamine = false;
         bool ograniczWitc = false;
+        int lp;
+        int lkolumn; //liczba kolumn dla lp
+        int lwierszy=1; //liczba wierszy dla lp
+        double[] row;
+        double[] variables;
+        string wyniki;
         List<Produkty> listaProduktow = null;
         List<Produkty> listaProduktowFiltr = null;
 
@@ -47,12 +56,14 @@ namespace DietaPwr
                 ograniczBialko = false;
                 bialkoOd.ReadOnly = true;
                 bialkoDo.ReadOnly = true;
+                lwierszy--;
             }
             else
             {
                 ograniczBialko = true;
                 bialkoOd.ReadOnly = false;
                 bialkoDo.ReadOnly = false;
+                lwierszy++; ;
             }
 
         }
@@ -64,12 +75,14 @@ namespace DietaPwr
                 ograniczSod = false;
                 sodOd.ReadOnly = true;
                 sodDo.ReadOnly = true;
+                lwierszy--;
             }
             else
             {
                 ograniczSod = true;
                 sodOd.ReadOnly = false;
                 sodDo.ReadOnly = false;
+                lwierszy++;
             }
         }
 
@@ -90,12 +103,14 @@ namespace DietaPwr
                 ograniczTluszcze = false;
                 tluszczeOd.ReadOnly = true;
                 tluszczeDo.ReadOnly = true;
+                lwierszy--;
             }
             else
             {
                 ograniczTluszcze = true;
                 tluszczeOd.ReadOnly = false;
                 tluszczeDo.ReadOnly = false;
+                lwierszy++;
             }
         }
 
@@ -106,12 +121,14 @@ namespace DietaPwr
                 ograniczWeglowodany = false;
                 weglowodanyOd.ReadOnly = true;
                 weglowodanyDo.ReadOnly = true;
+                lwierszy--;
             }
             else
             {
                 ograniczWeglowodany = true;
                 weglowodanyOd.ReadOnly = false;
                 weglowodanyDo.ReadOnly = false;
+                lwierszy++;
             }
         }
 
@@ -122,12 +139,14 @@ namespace DietaPwr
                 ograniczWapn = false;
                 wapnOd.ReadOnly = true;
                 wapnDo.ReadOnly = true;
+                lwierszy--;
             }
             else
             {
                 ograniczWapn = true;
                 wapnOd.ReadOnly = false;
                 wapnDo.ReadOnly = false;
+                lwierszy++;
             }
         }
 
@@ -138,12 +157,14 @@ namespace DietaPwr
                 ograniczZelazo = false;
                 zelazoOd.ReadOnly = true;
                 zelazoDo.ReadOnly = true;
+                lwierszy--;
             }
             else
             {
                 ograniczZelazo = true;
                 zelazoOd.ReadOnly = false;
                 zelazoDo.ReadOnly = false;
+                lwierszy++;
             }
         }
 
@@ -154,12 +175,14 @@ namespace DietaPwr
                 ograniczWita = false;
                 witaOd.ReadOnly = true;
                 witaDo.ReadOnly = true;
+                lwierszy--;
             }
             else
             {
                 ograniczWita = true;
                 witaOd.ReadOnly = false;
                 witaDo.ReadOnly = false;
+                lwierszy++;
             }
         }
 
@@ -170,12 +193,14 @@ namespace DietaPwr
                 ograniczZelazo = false;
                 tiaminaOd.ReadOnly = true;
                 tiaminaDo.ReadOnly = true;
+                lwierszy--;
             }
             else
             {
                 ograniczTiamine = true;
                 tiaminaOd.ReadOnly = false;
                 tiaminaDo.ReadOnly = false;
+                lwierszy++;
             }
         }
 
@@ -186,12 +211,14 @@ namespace DietaPwr
                 ograniczWitc = false;
                 witcOd.ReadOnly = true;
                 witcDo.ReadOnly = true;
+                lwierszy--;
             }
             else
             {
                 ograniczWitc = true;
                 witcOd.ReadOnly = false;
                 witcDo.ReadOnly = false;
+                lwierszy++;
             }
         }
 
@@ -262,6 +289,7 @@ namespace DietaPwr
             var filenamesList = new BindingList<Produkty>(listaProduktowFiltr);
 
             dataGridView1.DataSource = filenamesList; 
+            
         }
         private void setRowNumber(DataGridView dgv)
         {
@@ -369,13 +397,140 @@ namespace DietaPwr
         }
         #endregion
 
-        private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)
+        private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //new PanelDodawania().Show();
             PanelDodawania panelDodawania = new PanelDodawania(this);
             panelDodawania._listaProduktow = _listaProduktow;
             panelDodawania.Show();
             
+        }        
+        private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lkolumn = listaProduktowFiltr.Count();
+            lp = lpsolve.make_lp(lwierszy, lkolumn);
+            row = new double[lkolumn];
+            provider.NumberDecimalSeparator = ".";  
+            //ustawianie nazw kolumn
+            for (int i = 0; i < lkolumn; i++)
+            {
+                lpsolve.set_col_name(lp, i, listaProduktowFiltr[i].FoodName);
+               
+            }
+            //stworzenie funkcji celu
+            row = new double[lkolumn];
+            for (int i = 0; i < lkolumn; i++)
+                row[i] = Convert.ToDouble(listaProduktowFiltr[i].Calories, provider);
+                lpsolve.set_obj_fn(lp, row);
+                lpsolve.set_minim(lp);
+                
+#region dodawanie ograniczeń
+            if (ograniczBialko)
+            {
+                for (int i = 0; i < lkolumn; i++)
+                    row[i] = Convert.ToDouble(listaProduktowFiltr[i].Protein, provider);
+                if(bialkoOd.Text!="")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.GE, Convert.ToDouble(bialkoOd.Text,provider));
+                if(bialkoDo.Text!="")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.LE, Convert.ToDouble(bialkoDo.Text, provider));
+            }
+            if (ograniczTluszcze)
+            {
+                for (int i = 0; i < lkolumn; i++)
+                    row[i] = Convert.ToDouble(listaProduktowFiltr[i].Fat, provider);
+                if (tluszczeOd.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.GE, Convert.ToDouble(tluszczeOd.Text, provider));
+                if (tluszczeDo.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.LE, Convert.ToDouble(tluszczeDo.Text, provider));
+            }
+            if (ograniczWeglowodany)
+            {
+                for (int i = 0; i < lkolumn; i++)
+                    row[i] = Convert.ToDouble(listaProduktowFiltr[i].Carbohydrates, provider);
+                if (weglowodanyOd.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.GE, Convert.ToDouble(weglowodanyOd.Text, provider));
+                if (weglowodanyDo.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.LE, Convert.ToDouble(weglowodanyDo.Text, provider));
+            }
+            if (ograniczWapn)
+            {
+                for (int i = 0; i < lkolumn; i++)
+                    row[i] = Convert.ToDouble(listaProduktowFiltr[i].Calcium, provider);
+                if (wapnOd.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.GE, Convert.ToDouble(wapnOd.Text, provider));
+                if (wapnDo.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.LE, Convert.ToDouble(wapnDo.Text, provider));
+            }
+            if (ograniczZelazo)
+            {
+                for (int i = 0; i < lkolumn; i++)
+                    row[i] = Convert.ToDouble(listaProduktowFiltr[i].Iron, provider);
+                if (zelazoOd.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.GE, Convert.ToDouble(zelazoOd.Text, provider));
+                if (zelazoOd.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.LE, Convert.ToDouble(zelazoDo.Text, provider));
+            }
+            if (ograniczSod)
+            {
+                for (int i = 0; i < lkolumn; i++)
+                    row[i] = Convert.ToDouble(listaProduktowFiltr[i].Sodium, provider);
+                if (sodOd.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.GE, Convert.ToDouble(sodOd.Text, provider));
+                if (sodDo.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.LE, Convert.ToDouble(sodDo.Text, provider));
+            }
+            if (ograniczWita)
+            {
+                for (int i = 0; i < lkolumn; i++)
+                    row[i] = Convert.ToDouble(listaProduktowFiltr[i].VitaminA, provider);
+                if (witaOd.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.GE, Convert.ToDouble(witaOd.Text, provider));
+                if (witaDo.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.LE, Convert.ToDouble(witaDo.Text, provider));
+            }
+            if (ograniczTiamine)
+            {
+                for (int i = 0; i < lkolumn; i++)
+                    row[i] = Convert.ToDouble(listaProduktowFiltr[i].Thiamin, provider);
+                if (tiaminaOd.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.GE, Convert.ToDouble(tiaminaOd.Text, provider));
+                if (tiaminaDo.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.LE, Convert.ToDouble(tiaminaDo.Text, provider));
+            }
+            if (ograniczWitc)
+            {
+                for (int i = 0; i < lkolumn; i++)
+                    row[i] = Convert.ToDouble(listaProduktowFiltr[i].VitaminC, provider);
+                if (witcOd.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.GE, Convert.ToDouble(witcOd.Text, provider));
+                if (witcDo.Text != "")
+                    lpsolve.add_constraint(lp, row, lpsolve.lpsolve_constr_types.LE, Convert.ToDouble(witcDo.Text, provider));
+            }
+           
+#endregion
+            //rozwiązanie
+            variables = new double[lkolumn];
+            lpsolve.solve(lp);
+            lpsolve.get_variables(lp, variables);
+            wyniki = "";
+            for (int i = 0; i < lkolumn; i++)
+            {
+                if(variables[i]!=0)
+                    wyniki += "\n" + listaProduktowFiltr[i].FoodName + ": " + variables[i].ToString();
+
+            }
+            richTextBox1.Clear();
+            richTextBox1.Text = wyniki;
+            lpsolve.print_objective(lp);
+            lpsolve.print_solution(lp, 10);
+           
+
+            
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

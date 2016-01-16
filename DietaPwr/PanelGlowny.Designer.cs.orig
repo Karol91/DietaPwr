@@ -52,19 +52,6 @@
             this.chckBoxJuice = new System.Windows.Forms.CheckBox();
             this.chckBoxCheese = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.foodNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.caloriesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.proteinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.carbohydratesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.calciumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ironDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sodiumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vitaminADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.thiaminDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vitaminCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.produktyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label21 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -111,14 +98,29 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.otworzToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+<<<<<<< HEAD
             this.dodajProduktToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDelProd = new System.Windows.Forms.Button();
+=======
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.foodNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.caloriesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proteinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.carbohydratesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calciumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ironDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sodiumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vitaminADataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.thiaminDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vitaminCDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.produktyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+>>>>>>> origin/master
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produktyBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.produktyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -196,7 +198,6 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Controls.Add(this.btnDelProd);
             this.tabPage2.Controls.Add(this.chckBoxFish);
             this.tabPage2.Controls.Add(this.chckBoxPoultry);
             this.tabPage2.Controls.Add(this.chckBoxSnack);
@@ -396,88 +397,11 @@
             this.thiaminDataGridViewTextBoxColumn,
             this.vitaminCDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.produktyBindingSource;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(8, 87);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1244, 360);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            // 
-            // foodNameDataGridViewTextBoxColumn
-            // 
-            this.foodNameDataGridViewTextBoxColumn.DataPropertyName = "FoodName";
-            this.foodNameDataGridViewTextBoxColumn.HeaderText = "Food name";
-            this.foodNameDataGridViewTextBoxColumn.Name = "foodNameDataGridViewTextBoxColumn";
-            // 
-            // caloriesDataGridViewTextBoxColumn
-            // 
-            this.caloriesDataGridViewTextBoxColumn.DataPropertyName = "Calories";
-            this.caloriesDataGridViewTextBoxColumn.HeaderText = "Calories";
-            this.caloriesDataGridViewTextBoxColumn.Name = "caloriesDataGridViewTextBoxColumn";
-            // 
-            // proteinDataGridViewTextBoxColumn
-            // 
-            this.proteinDataGridViewTextBoxColumn.DataPropertyName = "Protein";
-            this.proteinDataGridViewTextBoxColumn.HeaderText = "Protein";
-            this.proteinDataGridViewTextBoxColumn.Name = "proteinDataGridViewTextBoxColumn";
-            // 
-            // fatDataGridViewTextBoxColumn
-            // 
-            this.fatDataGridViewTextBoxColumn.DataPropertyName = "Fat";
-            this.fatDataGridViewTextBoxColumn.HeaderText = "Fat";
-            this.fatDataGridViewTextBoxColumn.Name = "fatDataGridViewTextBoxColumn";
-            // 
-            // carbohydratesDataGridViewTextBoxColumn
-            // 
-            this.carbohydratesDataGridViewTextBoxColumn.DataPropertyName = "Carbohydrates";
-            this.carbohydratesDataGridViewTextBoxColumn.HeaderText = "Carbohydrates";
-            this.carbohydratesDataGridViewTextBoxColumn.Name = "carbohydratesDataGridViewTextBoxColumn";
-            // 
-            // calciumDataGridViewTextBoxColumn
-            // 
-            this.calciumDataGridViewTextBoxColumn.DataPropertyName = "Calcium";
-            this.calciumDataGridViewTextBoxColumn.HeaderText = "Calcium";
-            this.calciumDataGridViewTextBoxColumn.Name = "calciumDataGridViewTextBoxColumn";
-            // 
-            // ironDataGridViewTextBoxColumn
-            // 
-            this.ironDataGridViewTextBoxColumn.DataPropertyName = "Iron";
-            this.ironDataGridViewTextBoxColumn.HeaderText = "Iron";
-            this.ironDataGridViewTextBoxColumn.Name = "ironDataGridViewTextBoxColumn";
-            // 
-            // sodiumDataGridViewTextBoxColumn
-            // 
-            this.sodiumDataGridViewTextBoxColumn.DataPropertyName = "Sodium";
-            this.sodiumDataGridViewTextBoxColumn.HeaderText = "Sodium";
-            this.sodiumDataGridViewTextBoxColumn.Name = "sodiumDataGridViewTextBoxColumn";
-            // 
-            // vitaminADataGridViewTextBoxColumn
-            // 
-            this.vitaminADataGridViewTextBoxColumn.DataPropertyName = "VitaminA";
-            this.vitaminADataGridViewTextBoxColumn.HeaderText = "Vitamin A";
-            this.vitaminADataGridViewTextBoxColumn.Name = "vitaminADataGridViewTextBoxColumn";
-            // 
-            // thiaminDataGridViewTextBoxColumn
-            // 
-            this.thiaminDataGridViewTextBoxColumn.DataPropertyName = "Thiamin";
-            this.thiaminDataGridViewTextBoxColumn.HeaderText = "Thiamin";
-            this.thiaminDataGridViewTextBoxColumn.Name = "thiaminDataGridViewTextBoxColumn";
-            // 
-            // vitaminCDataGridViewTextBoxColumn
-            // 
-            this.vitaminCDataGridViewTextBoxColumn.DataPropertyName = "VitaminC";
-            this.vitaminCDataGridViewTextBoxColumn.HeaderText = "Vitamin C";
-            this.vitaminCDataGridViewTextBoxColumn.Name = "vitaminCDataGridViewTextBoxColumn";
-            // 
-            // produktyBindingSource
-            // 
-            this.produktyBindingSource.DataSource = typeof(DietaPwr.Produkty);
             // 
             // label21
             // 
@@ -944,26 +868,94 @@
             // otworzToolStripMenuItem
             // 
             this.otworzToolStripMenuItem.Name = "otworzToolStripMenuItem";
-            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.otworzToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.otworzToolStripMenuItem.Text = "Open";
             this.otworzToolStripMenuItem.Click += new System.EventHandler(this.otworzToolStripMenuItem_Click);
             // 
+<<<<<<< HEAD
             // dodajProduktToolStripMenuItem
             // 
             this.dodajProduktToolStripMenuItem.Name = "dodajProduktToolStripMenuItem";
-            this.dodajProduktToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.dodajProduktToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.dodajProduktToolStripMenuItem.Text = "Add product";
             this.dodajProduktToolStripMenuItem.Click += new System.EventHandler(this.dodajProduktToolStripMenuItem_Click);
+=======
+            // typeDataGridViewTextBoxColumn
             // 
-            // btnDelProd
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
             // 
-            this.btnDelProd.Location = new System.Drawing.Point(665, 40);
-            this.btnDelProd.Name = "btnDelProd";
-            this.btnDelProd.Size = new System.Drawing.Size(116, 23);
-            this.btnDelProd.TabIndex = 21;
-            this.btnDelProd.Text = "Delete product";
-            this.btnDelProd.UseVisualStyleBackColor = true;
-            this.btnDelProd.Click += new System.EventHandler(this.btnDelProd_Click);
+            // foodNameDataGridViewTextBoxColumn
+            // 
+            this.foodNameDataGridViewTextBoxColumn.DataPropertyName = "FoodName";
+            this.foodNameDataGridViewTextBoxColumn.HeaderText = "Food name";
+            this.foodNameDataGridViewTextBoxColumn.Name = "foodNameDataGridViewTextBoxColumn";
+            // 
+            // caloriesDataGridViewTextBoxColumn
+            // 
+            this.caloriesDataGridViewTextBoxColumn.DataPropertyName = "Calories";
+            this.caloriesDataGridViewTextBoxColumn.HeaderText = "Calories";
+            this.caloriesDataGridViewTextBoxColumn.Name = "caloriesDataGridViewTextBoxColumn";
+            // 
+            // proteinDataGridViewTextBoxColumn
+            // 
+            this.proteinDataGridViewTextBoxColumn.DataPropertyName = "Protein";
+            this.proteinDataGridViewTextBoxColumn.HeaderText = "Protein";
+            this.proteinDataGridViewTextBoxColumn.Name = "proteinDataGridViewTextBoxColumn";
+            // 
+            // fatDataGridViewTextBoxColumn
+            // 
+            this.fatDataGridViewTextBoxColumn.DataPropertyName = "Fat";
+            this.fatDataGridViewTextBoxColumn.HeaderText = "Fat";
+            this.fatDataGridViewTextBoxColumn.Name = "fatDataGridViewTextBoxColumn";
+            // 
+            // carbohydratesDataGridViewTextBoxColumn
+            // 
+            this.carbohydratesDataGridViewTextBoxColumn.DataPropertyName = "Carbohydrates";
+            this.carbohydratesDataGridViewTextBoxColumn.HeaderText = "Carbohydrates";
+            this.carbohydratesDataGridViewTextBoxColumn.Name = "carbohydratesDataGridViewTextBoxColumn";
+            // 
+            // calciumDataGridViewTextBoxColumn
+            // 
+            this.calciumDataGridViewTextBoxColumn.DataPropertyName = "Calcium";
+            this.calciumDataGridViewTextBoxColumn.HeaderText = "Calcium";
+            this.calciumDataGridViewTextBoxColumn.Name = "calciumDataGridViewTextBoxColumn";
+            // 
+            // ironDataGridViewTextBoxColumn
+            // 
+            this.ironDataGridViewTextBoxColumn.DataPropertyName = "Iron";
+            this.ironDataGridViewTextBoxColumn.HeaderText = "Iron";
+            this.ironDataGridViewTextBoxColumn.Name = "ironDataGridViewTextBoxColumn";
+            // 
+            // sodiumDataGridViewTextBoxColumn
+            // 
+            this.sodiumDataGridViewTextBoxColumn.DataPropertyName = "Sodium";
+            this.sodiumDataGridViewTextBoxColumn.HeaderText = "Sodium";
+            this.sodiumDataGridViewTextBoxColumn.Name = "sodiumDataGridViewTextBoxColumn";
+            // 
+            // vitaminADataGridViewTextBoxColumn
+            // 
+            this.vitaminADataGridViewTextBoxColumn.DataPropertyName = "VitaminA";
+            this.vitaminADataGridViewTextBoxColumn.HeaderText = "Vitamin A";
+            this.vitaminADataGridViewTextBoxColumn.Name = "vitaminADataGridViewTextBoxColumn";
+            // 
+            // thiaminDataGridViewTextBoxColumn
+            // 
+            this.thiaminDataGridViewTextBoxColumn.DataPropertyName = "Thiamin";
+            this.thiaminDataGridViewTextBoxColumn.HeaderText = "Thiamin";
+            this.thiaminDataGridViewTextBoxColumn.Name = "thiaminDataGridViewTextBoxColumn";
+            // 
+            // vitaminCDataGridViewTextBoxColumn
+            // 
+            this.vitaminCDataGridViewTextBoxColumn.DataPropertyName = "VitaminC";
+            this.vitaminCDataGridViewTextBoxColumn.HeaderText = "Vitamin C";
+            this.vitaminCDataGridViewTextBoxColumn.Name = "vitaminCDataGridViewTextBoxColumn";
+            // 
+            // produktyBindingSource
+            // 
+            this.produktyBindingSource.DataSource = typeof(DietaPwr.Produkty);
+>>>>>>> origin/master
             // 
             // PanelGlowny
             // 
@@ -979,12 +971,12 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.produktyBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.produktyBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1075,7 +1067,6 @@
         private System.Windows.Forms.CheckBox chckBoxDessert;
         private System.Windows.Forms.CheckBox chckBoxBaked;
         private System.Windows.Forms.ToolStripMenuItem dodajProduktToolStripMenuItem;
-        private System.Windows.Forms.Button btnDelProd;
 
     }
 }

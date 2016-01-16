@@ -397,6 +397,7 @@ namespace DietaPwr
         }
         #endregion
 
+<<<<<<< HEAD
         private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //new PanelDodawania().Show();
@@ -405,6 +406,7 @@ namespace DietaPwr
             panelDodawania.Show();
             
         }
+=======
         private void button2_Click(object sender, EventArgs e)
         {
             lkolumn = listaProduktowFiltr.Count();
@@ -532,13 +534,6 @@ namespace DietaPwr
         {
 
         }
-
-        private void btnDelProd_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected)>0)
-            {
-
-            }
-        }
+>>>>>>> origin/master
     }
 }

@@ -57,8 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ListaTypow.cs" />
-    <Compile Include="PanelDodawania.cs">
     <Compile Include="lpsolve55.cs" />
+    <Compile Include="PanelDodawania.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PanelDodawania.Designer.cs">

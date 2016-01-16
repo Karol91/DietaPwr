@@ -36,10 +36,12 @@ namespace DietaPwr
         string wyniki;
         List<Produkty> listaProduktow = null;
         List<Produkty> listaProduktowFiltr = null;
+        bool flag = false;
 
         public PanelGlowny()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            dataGridView1.AllowUserToDeleteRows = false;
         }
 
         public List<Produkty> _listaProduktow
@@ -48,7 +50,7 @@ namespace DietaPwr
             set { listaProduktowFiltr = value; }
         }
 
-
+        #region checkboxy ograniczenia
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (ograniczBialko)
@@ -84,16 +86,6 @@ namespace DietaPwr
                 sodDo.ReadOnly = false;
                 lwierszy++;
             }
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bialkoOd_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void tluszczeBox_CheckedChanged(object sender, EventArgs e)
@@ -221,8 +213,9 @@ namespace DietaPwr
                 lwierszy++;
             }
         }
+        #endregion
 
-
+        #region eventy
         private void otworzToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int size = -1;
@@ -243,12 +236,85 @@ namespace DietaPwr
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show("Nie można otworzyć podanego pliku: "+exception.ToString()  , "Błąd");
+                    MessageBox.Show("Cannot open this file: " + exception.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     
                 }
             }
         }
 
+        private void btnDelProd_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 1)
+            {
+                if (dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected) > 0)
+                {
+                    Produkty produkt = new Produkty();
+
+                    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                    {
+                        produkt.Type = row.Cells[0].Value.ToString();
+                        produkt.FoodName = row.Cells[1].Value.ToString();
+                        produkt.Calories = row.Cells[2].Value.ToString();
+                        produkt.Protein = row.Cells[3].Value.ToString();
+                        produkt.Fat = row.Cells[4].Value.ToString();
+                        produkt.Carbohydrates = row.Cells[5].Value.ToString();
+                        produkt.Calcium = row.Cells[6].Value.ToString();
+                        produkt.Iron = row.Cells[7].Value.ToString();
+                        produkt.Sodium = row.Cells[8].Value.ToString();
+                        produkt.VitaminA = row.Cells[9].Value.ToString();
+                        produkt.Thiamin = row.Cells[10].Value.ToString();
+                        produkt.VitaminC = row.Cells[11].Value.ToString();
+                    }
+                    DialogResult result = MessageBox.Show("Do you want delete this product? \n " + produkt.Type + ", " + produkt.FoodName, "Delete product", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (result == DialogResult.OK)
+                        UsunProdukt(produkt);
+                }
+                else
+                    MessageBox.Show("Check the product!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("Load data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridView1.Rows.Count > 1)
+                {
+                    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                    {
+                        string value1 = row.Cells[0].Value.ToString();
+                        string value2 = row.Cells[1].Value.ToString();
+                        string value3 = row.Cells[2].Value.ToString();
+                        string value4 = row.Cells[3].Value.ToString();
+                        string value5 = row.Cells[4].Value.ToString();
+                        string value6 = row.Cells[5].Value.ToString();
+                        string value7 = row.Cells[6].Value.ToString();
+                        string value8 = row.Cells[7].Value.ToString();
+                        string value9 = row.Cells[8].Value.ToString();
+                        string value10 = row.Cells[9].Value.ToString();
+                        string value11 = row.Cells[10].Value.ToString();
+                        string value12 = row.Cells[11].Value.ToString();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Load data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PanelDodawania panelDodawania = new PanelDodawania(this);
+            panelDodawania._listaProduktow = _listaProduktow;
+            panelDodawania.Show();
+
+        }
+        #endregion
+
+        #region metody
         bool parsujCsv(string file)
         {
             listaProduktow = new List<Produkty>();
@@ -278,7 +344,7 @@ namespace DietaPwr
                
             catch (Exception exception)
             {
-                MessageBox.Show("Nie można sparsować podanego pliku: " + exception.ToString(), "Błąd");
+                MessageBox.Show("Cannot parse this file: " + exception.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -288,7 +354,10 @@ namespace DietaPwr
         {            
             var filenamesList = new BindingList<Produkty>(listaProduktowFiltr);
 
-            dataGridView1.DataSource = filenamesList; 
+            dataGridView1.DataSource = filenamesList;
+            var results = listaProduktowFiltr.Where(l => !listaProduktow.Any(e => e.FoodName == l.FoodName));
+            if (results != null)
+                listaProduktow.AddRange(results);
             
         }
         private void setRowNumber(DataGridView dgv)
@@ -301,110 +370,155 @@ namespace DietaPwr
 
         public void BindAndRowNumber ()
         {
-
             BindGrid();
             setRowNumber(dataGridView1);
         }
 
         private void Filtrowanie(CheckBox checkbox, String typ)
         {
-            try
+            if (listaProduktowFiltr != null)
             {
-                if (checkbox.Checked)
+                try
                 {
-                    foreach (Produkty produkt in listaProduktow)
+                    if (checkbox.Checked)
                     {
-                        if (produkt.Type.Equals(typ))
-                            listaProduktowFiltr.Add(produkt);
+                        foreach (Produkty produkt in listaProduktow)
+                        {
+                            if (produkt.Type.Equals(typ))
+                                listaProduktowFiltr.Add(produkt);
+                        }
                     }
+                    else
+                    {
+                        foreach (Produkty produkt in listaProduktow)
+                        {
+                            if (produkt.Type.Equals(typ))
+                                listaProduktowFiltr.Remove(produkt);
+                        }
+                    }
+                    BindGrid();
+                    setRowNumber(dataGridView1);
                 }
-                else
+                catch (Exception)
                 {
-                    foreach (Produkty produkt in listaProduktow)
-                    {
-                        if (produkt.Type.Equals(typ))
-                            listaProduktowFiltr.Remove(produkt);
-                    }
+                    MessageBox.Show("Occured error during filtration", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                BindGrid();
-                setRowNumber(dataGridView1);
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("Wystapił błąd podczas filtrowania. Brak danych", "Błąd");
+                MessageBox.Show("Occured error during filtration. Load data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string i = checkbox.CheckState.ToString();
+                flag = true;
+                if (checkbox.Checked == true)
+                    checkbox.Checked = false;
+                else
+                    checkbox.Checked = true;
+                
             }
         }
+
+        private void UsunProdukt(Produkty produktDoUsuniecia)
+        {
+            foreach (Produkty produkt in listaProduktow)
+            {
+                if (produkt.FoodName.Equals(produktDoUsuniecia.FoodName))
+                {
+                    listaProduktowFiltr.Remove(produkt);
+                    BindAndRowNumber();
+                    break;
+                }
+            }
+        }
+        #endregion
 
         #region Filtry checkBox
         private void chckBoxCheese_CheckedChanged(object sender, EventArgs e)
         {
-            Filtrowanie(chckBoxCheese, chckBoxCheese.Text);
+            if(!flag)
+                Filtrowanie(chckBoxCheese, chckBoxCheese.Text);
+            flag = false;
         }
 
         private void chckBoxJuice_CheckedChanged(object sender, EventArgs e)
         {
-            Filtrowanie(chckBoxJuice, chckBoxJuice.Text);
+            if (!flag)
+                Filtrowanie(chckBoxJuice, chckBoxJuice.Text);
+            flag = false;
         }
 
         private void chckBoxFruit_CheckedChanged(object sender, EventArgs e)
         {
-            Filtrowanie(chckBoxFruit, chckBoxFruit.Text);
+            if (!flag)
+                Filtrowanie(chckBoxFruit, chckBoxFruit.Text);
+            flag = false;
         }
 
         private void chckBoxVegetable_CheckedChanged(object sender, EventArgs e)
         {
-            Filtrowanie(chckBoxVegetable, chckBoxVegetable.Text);
+            if (!flag)
+                Filtrowanie(chckBoxVegetable, chckBoxVegetable.Text);
+            flag = false;
         }
 
         private void chckBoxMeat_CheckedChanged(object sender, EventArgs e)
         {
-            Filtrowanie(chckBoxMeat, chckBoxMeat.Text);
+            if (!flag)
+                Filtrowanie(chckBoxMeat, chckBoxMeat.Text);
+            flag = false;
         }
 
         private void chckBoxBreakfast_CheckedChanged(object sender, EventArgs e)
         {
-            Filtrowanie(chckBoxBreakfast, chckBoxBreakfast.Text);
+            if (!flag)
+                Filtrowanie(chckBoxBreakfast, chckBoxBreakfast.Text);
+            flag = false;
         }
 
         private void chckBoxBaked_CheckedChanged(object sender, EventArgs e)
         {
-            Filtrowanie(chckBoxBaked, chckBoxBaked.Text);
+            if (!flag)
+                Filtrowanie(chckBoxBaked, chckBoxBaked.Text);
+            flag = false;
         }
 
         private void chckBoxDessert_CheckedChanged(object sender, EventArgs e)
         {
-            Filtrowanie(chckBoxDessert, chckBoxDessert.Text);
+            if (!flag)
+                Filtrowanie(chckBoxDessert, chckBoxDessert.Text);
+            flag = false;
         }
 
         private void chckBoxDairy_CheckedChanged(object sender, EventArgs e)
         {
-            Filtrowanie(chckBoxDairy, chckBoxDairy.Text);
+            if (!flag)
+                Filtrowanie(chckBoxDairy, chckBoxDairy.Text);
+            flag = false;
         }
 
         private void chckBoxSnack_CheckedChanged(object sender, EventArgs e)
         {
-            Filtrowanie(chckBoxSnack, chckBoxSnack.Text);
+            if (!flag)
+                Filtrowanie(chckBoxSnack, chckBoxSnack.Text);
+            flag = false;
         }
 
         private void chckBoxPoultry_CheckedChanged(object sender, EventArgs e)
         {
-            Filtrowanie(chckBoxPoultry, chckBoxPoultry.Text);
+            if (!flag)
+                Filtrowanie(chckBoxPoultry, chckBoxPoultry.Text);
+            flag = false;
         }
 
         private void chckBoxFish_CheckedChanged(object sender, EventArgs e)
         {
-            Filtrowanie(chckBoxFish, chckBoxFish.Text);
+            if (!flag)
+                Filtrowanie(chckBoxFish, chckBoxFish.Text);
+            flag = false;
         }
         #endregion
 
-        private void dodajProduktToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //new PanelDodawania().Show();
-            PanelDodawania panelDodawania = new PanelDodawania(this);
-            panelDodawania._listaProduktow = _listaProduktow;
-            panelDodawania.Show();
-            
-        }
+
+        #region obliczenie diety
         private void button2_Click(object sender, EventArgs e)
         {
             lkolumn = listaProduktowFiltr.Count();
@@ -527,18 +641,9 @@ namespace DietaPwr
 
             
         }
+        #endregion
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
 
-        private void btnDelProd_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected)>0)
-            {
-
-            }
-        }
     }
 }

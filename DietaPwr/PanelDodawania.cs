@@ -69,13 +69,5 @@ namespace DietaPwr
                 MessageBox.Show("Enter food name and set type of food", "Warning");
 
         }
-
-        private PanelGlowny PanelGlowny()
-        {
-            throw new NotImplementedException();
-        }
-
-
-
     }
 }
